@@ -1,4 +1,4 @@
-<?php require_once 'mysql-login-php';?>
+<?php require_once 'mysql-login.php';?>
 <?php
 try {
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database,$username,$password);
