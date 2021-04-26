@@ -1,4 +1,3 @@
-
 <?php require_once 'mysql-login-php';?>
 <?php
 try {
