@@ -5,7 +5,5 @@ function getDataFileArray($file){
     $contenido = fread($archivo,filesize($file));
     fclose($archivo);
     return json_decode($contenido,true);
-    
 }
-
 ?>
