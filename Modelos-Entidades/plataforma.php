@@ -2,13 +2,13 @@
 
     class Plataforma{
 
-        protected $id;
+        protected $id_plataforma;
         protected $nombre;
 
         public function __construct(){
         }
         public function getId(){
-            return $this->id;
+            return $this->id_plataforma;
         }
         public function getNombre(){
             return $this->nombre;
@@ -17,4 +17,5 @@
             $this->nombre = $nombre;
         }
     }
+
 ?>

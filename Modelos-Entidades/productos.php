@@ -1,14 +1,14 @@
 <?php
 
-    class Desarrollador{
+    class Productos{
 
-        protected $id_desarrollador;
+        protected $id_producto;
         protected $nombre;
 
         public function __construct(){
         }
         public function getId(){
-            return $this->id_desarrollador;
+            return $this->id_producto;
         }
         public function getNombre(){
             return $this->nombre;
