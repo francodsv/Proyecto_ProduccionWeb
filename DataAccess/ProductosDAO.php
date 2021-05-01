@@ -1,8 +1,8 @@
 
 <?php
 
-    require_once('C:\xampp\htdocs\ProdWeb-TP\DataAccess\DAO.php');
-    require_once('C:\xampp\htdocs\ProdWeb-TP\Modelos\ProductosEntity.php');
+    require_once('DAO.php');
+    require_once('..\Modelos\ProductosEntity.php');
 
     class ProductosDAO extends DAO {
 
