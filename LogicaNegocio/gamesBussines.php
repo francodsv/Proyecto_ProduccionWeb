@@ -2,7 +2,7 @@
 
 <?php
 
-    include_once('C:\xampp\htdocs\ProdWeb-TP\DataAccess\ProductosDAO.php');
+    include_once('..\DataAccess\ProductosDAO.php');
   
 
     class gamesBussines {

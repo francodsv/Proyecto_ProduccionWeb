@@ -3,8 +3,8 @@
 
 <?php 
 
-    include('LogicaNegocio/gamesBussines.php');
-    include('Helpers/conecction.php');
+    include('../LogicaNegocio/gamesBussines.php');
+    include('../Helpers/conecction.php');
 
 ?>
 
