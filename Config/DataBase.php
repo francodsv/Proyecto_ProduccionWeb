@@ -6,5 +6,5 @@ $dbPort = '3306';
 $dbUser = 'root';
 $dbPass = '';
 $dbName = 'gamestore';
-// Prueba Tefa
+// Prueba German
 ?>
