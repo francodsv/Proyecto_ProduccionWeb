@@ -6,7 +6,7 @@ function getDataFileArray($file){
     fclose($archivo);
     return json_decode($contenido,true);
 
-    /hola
+    //hola
     
 }
 
