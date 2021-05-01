@@ -7,6 +7,7 @@
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
             <div class="btn-group">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
                     Filtrar por Plataforma
                 </button>
                 <div class="dropdown-menu">
@@ -27,6 +28,7 @@
 
             <div class="btn-group">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                     Filtrar por Género
                 </button>
                 <div class="dropdown-menu">

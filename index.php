@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<?php 
+
+    include('LogicaNegocio/gamesBussines.php');
+    include('Helpers/conecction.php');
+
+?>
 
 <body>
 
@@ -11,6 +17,8 @@
 
     <main>
         <section>
+
+         
 
             <div class="container mt-3 d-xs-block">
                 <div id="micarousel" class="carousel slide" data-ride="carousel">
@@ -42,6 +50,8 @@
 
                 </div>
             </div>
+
+       
 
             <div id="iniciogrillaimg" class="container">
                 <div class="row">
@@ -79,7 +89,7 @@
 
         <section>
 
-            <div class="container listadodivcards">
+                        <div class="container listadodivcards">
 
                 <div class="row">
                     <div class="col-xs-12">
@@ -125,7 +135,7 @@
                     ?>
 
                 </div>
-            </div>
+                </div>
 
         </section>
 
