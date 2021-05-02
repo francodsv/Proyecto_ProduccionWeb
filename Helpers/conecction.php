@@ -4,9 +4,12 @@
 
     try{
         $con = new PDO("mysql:host=$dbHost;dbname=$dbName;port=$dbPort",$dbUser,$dbPass);
-    }catch(PDOException $error){
-        echo $error->getMessage();
+        print "Conexión exitosa!";
+    }catch (PDOException $e) {
+        print "¡Error!: " . $e->getMessage();
         die();
     }
 
 ?>
+
+

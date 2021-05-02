@@ -13,7 +13,7 @@
 
         public function getOne($id){
 
-            $sql = "SELECT id_desarrollador,nombre FROM desarrollador WHERE id_desarrollador = $id";
+            $sql = "SELECT id_desarrollador,nombre FROM $this->table WHERE id_desarrollador = $id";
             $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'DesarrolladorEntity')->fetch();
             return $resultado;
             
@@ -21,7 +21,7 @@
 
         public function getAll($where = array()){
 
-            $sql = "SELECT id_desarrollador,nombre FROM users";
+            $sql = "SELECT id_desarrollador,nombre FROM $this->table";
             $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'DesarrolladorEntity')->fetchAll();
             return $resultado;
     

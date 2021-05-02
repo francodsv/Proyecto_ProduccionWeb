@@ -6,8 +6,8 @@ class ProductosEntity extends BaseEntity
 {
 
     protected $desarrollador;
-    protected $categoria;
     protected $plataforma;
+    protected $categoria;
     protected $descripcion;
     protected $precio;
     protected $stock;
@@ -25,55 +25,55 @@ class ProductosEntity extends BaseEntity
 
     public function getDesarrollador() {
 
-        return $this->$desarrollador;
+        return $this->desarrollador;
 
     }
 
     public function getPlataforma() {
 
-        return $this->$plataforma;
+        return $this->plataforma;
 
     }
 
     public function getCategoria() {
 
-        return $this->$categoria;
+        return $this->categoria;
 
     }
 
     public function getDescripcion() {
 
-        return $this->$descripcion;
+        return $this->descripcion;
 
     }
 
     public function getPrecio() {
 
-        return $this->$precio;
+        return $this->precio;
 
     }
 
     public function getStock() {
 
-        return $this->$stock;
+        return $this->stock;
 
     }
 
     public function getDestacado() {
 
-        return $this->$destacado;
+        return $this->destacado;
 
     }
 
     public function getCalificacion() {
 
-        return $this->$calificacion;
+        return $this->calificacion;
 
     }
 
     public function getFechaLanzamiento() {
 
-        return $this->$fechaLanzamiento;
+        return $this->fechaLanzamiento;
 
     }
 

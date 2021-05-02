@@ -5,7 +5,8 @@
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
-    /*include_once('../LogicaNegocio/gamesBussines.php');*/
+    include_once('../LogicaNegocio/gamesBussines.php');
+    include('../Helpers/conecction.php');
 ?>
 
 <body>
@@ -136,21 +137,73 @@
 
                 </div>
                 </div>
-                <?php
-
-                $postGames = new gamesBussines($con);
-                foreach($postGames->getProductos() as $post){
-                ?> 
-                <h1>
-                <?php echo $post->getNombre(); ?> </h1>   
-   
-                <?php    
-                } ?>  
-
-
+                
         </section>
         
+        <section>
+
+                        <div class="container listadodivcards">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="tituloseccion"><img src="imagenes/iconos/iconodestacados65.jpg" alt="Icono destacados tamaño 65" width="65" height="65" class="img-fluid rounded-circle"> Destacados</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <?php 
+                    $postGames = new gamesBussines($con);
+                    foreach ($postGames->getProductos() as $post) { 
+                    
+                    if($post->getDestacado()=='True') { ?>
+
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <article class="card">
+                            <a href="detalleproductos.php?prod=<?php echo $post->getId()?>"><img src="imagenes/<?php echo $post->getId().'/caratula.jpg'?>" alt="Carátula <?php echo $post->getNombre()?>" width="580" height="730" class="img-fluid"></a>
+                            <h2><a href="detalleproductos.php?prod=<?php echo $post->getId()?>"><?php echo $post->getNombre() . "<br />"; ?></a></h2>
+                            <div class="visualcard">
+                            <p><?php echo ucfirst(substr($post->getDescripcion(),0,125)); ?><a href="detalleproductos.php?prod=<?php echo $post->getId()?>"> Ver más...</a></p>
+
+                            <p class="listadogenero">Género: <?php 
                         
+                            
+                        foreach(getDataFileArray('archivosjson/generos.json') as $generito){
+                                if($generito['id'] == $productito['genero']){
+                                    echo $generito['nombre']. "<br />"; } } ?></p>
+
+                            <p class="listadoplataforma"><?php 
+                        
+                        foreach(getDataFileArray('archivosjson/plataformas.json') as $plataformita){
+                                if($plataformita['id'] == $productito['plataforma']){
+                                    echo $plataformita['nombre']. "<br />"; } } ?></p>
+                            <a href=#stophere>
+                                <p class="listadoprecio"><img src="imagenes/iconos/iconocomprablanco.png" alt="Icono compra blanco" width="25" height="25" class="img-fluid float-left"><?php echo "$".$productito['precio'] . "<br />"; ?></p>
+                            </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <?php 
+                            }
+                        }
+                    ?>
+
+                </div>
+                </div>
+                
+        </section>
+
+        <?php
+
+        $postGames = new gamesBussines($con);
+            foreach($postGames->getProductos() as $post){
+                
+                echo $post->getNombre();
+                echo $post->getDescripcion();
+                echo $post->getDestacado();
+                echo $post->getId();
+        } ?>                  
 
     </main>
 

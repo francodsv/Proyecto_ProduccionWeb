@@ -14,7 +14,7 @@
 
         public function getOne($id) {
         
-            $sql = "SELECT id_plataforma, nombre FROM plataforma WHERE id_plataforma = $id";
+            $sql = "SELECT id_plataforma, nombre FROM $this->table WHERE id_plataforma = $id";
             $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PlataformaEntity')->fetch();
             return $resultado;
 
@@ -22,7 +22,7 @@
 
         public function getAll($where = array()) {
 
-            $sql = "SELECT id_plataforma, nombre FROM plataforma";
+            $sql = "SELECT id_plataforma, nombre FROM $this->table";
             $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PlataformaEntity')->fetchAll();
             return $resultado;
 
