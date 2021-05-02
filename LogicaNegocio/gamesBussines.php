@@ -2,7 +2,7 @@
 
 <?php
 
-    include_once('..\DataAccess\ProductosDAO.php');
+    include_once('../DataAccess/ProductosDAO.php');
   
 
     class gamesBussines {
@@ -17,7 +17,7 @@
 
         public function getProductos() {
 
-            return $this->ProductosDao->getOne();
+            return $this->ProductosDao->getAll();
 
         }
 

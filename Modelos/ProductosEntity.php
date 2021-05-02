@@ -18,7 +18,9 @@ class ProductosEntity extends BaseEntity
     function __construct() {
 
         parent::__construct();
-
+        $this->desarrollador = array();
+        $this->plataforma = array();
+        $this->categoria = array();
     }
 
     public function getDesarrollador() {
@@ -27,15 +29,15 @@ class ProductosEntity extends BaseEntity
 
     }
 
-    public function getCategoria() {
-
-        return $this->$categoria;
-
-    }
-
     public function getPlataforma() {
 
         return $this->$plataforma;
+
+    }
+
+    public function getCategoria() {
+
+        return $this->$categoria;
 
     }
 
@@ -79,19 +81,19 @@ class ProductosEntity extends BaseEntity
 
     public function setDesarrollador($desarrollador) {
 
-        $this->titulo = $titulo;
-
-    }
-
-    public function setCategoria($categoria) {
-
-        $this->categoria = $categoria;
+        $this->desarrollador = $desarrollador;
 
     }
 
     public function setPlataforma($plataforma) {
 
         $this->plataforma = $plataforma;
+
+    }
+
+    public function setCategoria($categoria) {
+
+        $this->categoria = $categoria;
 
     }
 

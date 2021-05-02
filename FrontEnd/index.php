@@ -2,17 +2,17 @@
 <html lang="es">
 
 <?php 
-
-    include('../LogicaNegocio/gamesBussines.php');
-    include('../Helpers/conecction.php');
-
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
+    //include_once('../LogicaNegocio/gamesBussines.php');
 ?>
 
 <body>
 
     <?php 
-    require "header.php";
-    require "filtro.php";
+    require_once "header.php";
+    require_once "filtro.php";
 ?>
 
     <main>
@@ -138,6 +138,19 @@
                 </div>
 
         </section>
+        
+
+    //INTENTO TRAER EL NOMBRE
+        <?php
+
+        $postGames = new gamesBussines($con);
+        foreach($postGames->getProductos() as $post){
+        ?> 
+        <h1>
+        <?php echo $post->getNombre(); ?> </h1>   
+           // echo $post->getEntrada();; 
+        <?php    
+        } ?>                   
 
     </main>
 

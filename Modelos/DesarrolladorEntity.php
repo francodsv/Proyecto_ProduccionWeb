@@ -1,5 +1,7 @@
 <?php 
 
+require_once('BaseEntity.php');
+
 class desarrolladorEntity extends BaseEntity
 {
 
