@@ -2,7 +2,7 @@
 
 require_once('BaseEntity.php');
 
-class CategoryEntity extends BaseEntity {
+class CategoriaEntity extends BaseEntity {
 
     protected $id_categoria;
 

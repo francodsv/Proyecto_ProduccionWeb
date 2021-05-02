@@ -1,4 +1,3 @@
-
 <?php
 
     require_once('DAO.php');
@@ -6,8 +5,8 @@
 
     class CategoriaDAO extends DAO {
 
-        function __construct($con)
-        {
+        function __construct($con){
+            
             parent::__construct($con);
             $this->table = 'categoria';
         }

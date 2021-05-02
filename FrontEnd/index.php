@@ -6,6 +6,8 @@
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
     include_once('../LogicaNegocio/gamesBussines.php');
+    include_once('../LogicaNegocio/categoriaBussines.php');
+    include_once('../LogicaNegocio/plataformaBussines.php');
     include('../Helpers/conecction.php');
 ?>
 
@@ -88,6 +90,7 @@
 
         </section>
 
+<!-- cards desde JSON
         <section>
 
                         <div class="container listadodivcards">
@@ -100,7 +103,7 @@
 
                 <div class="row">
 
-                    <?php foreach ($fprArray as $productito) { 
+                    <?php /* foreach ($fprArray as $productito) { 
                     
                     if($productito['destacado']) { ?>
 
@@ -133,12 +136,12 @@
                     <?php 
                             }
                         }
-                    ?>
+                   */ ?>
 
                 </div>
                 </div>
                 
-        </section>
+        </section> -->
         
         <section>
 
@@ -153,7 +156,11 @@
                 <div class="row">
 
                     <?php 
+
                     $postGames = new gamesBussines($con);
+                    $postCategoria = new categoriaBussines($con);
+                    $postPlataforma = new plataformaBussines($con);
+                    
                     foreach ($postGames->getProductos() as $post) { 
                     
                     if($post->getDestacado()=='True') { ?>
@@ -164,21 +171,21 @@
                             <h2><a href="detalleproductos.php?prod=<?php echo $post->getIDProducto()?>"><?php echo $post->getNombre() . "<br />"; ?></a></h2>
                             <div class="visualcard">
                             <p><?php echo ucfirst(substr($post->getDescripcion(),0,125)); ?><a href="detalleproductos.php?prod=<?php echo $post->getIDProducto()?>"> Ver más...</a></p>
-
-                            <p class="listadogenero">Género: <?php 
+                            
+                            <p class="listadogenero">Género: <?php  
                         
                             
-                        foreach(getDataFileArray('archivosjson/generos.json') as $generito){
-                                if($generito['id'] == $productito['genero']){
-                                    echo $generito['nombre']. "<br />"; } } ?></p>
-
+                        foreach($postCategoria->getCategoria() as $postC){
+                                if($postC->getIDCategoria() == $post->getIDCategoria()){
+                                    echo $postC->getNombre(). "<br />"; } } ?></p> 
+                                    
                             <p class="listadoplataforma"><?php 
                         
-                        foreach(getDataFileArray('archivosjson/plataformas.json') as $plataformita){
-                                if($plataformita['id'] == $productito['plataforma']){
-                                    echo $plataformita['nombre']. "<br />"; } } ?></p>
+                        foreach($postPlataforma->getPlataforma() as $postP){
+                                if($postP->getIDPlataforma() == $post->getIDPlataforma()){
+                                    echo $postP->getNombre(). "<br />"; } } ?></p>
                             <a href=#stophere>
-                                <p class="listadoprecio"><img src="imagenes/iconos/iconocomprablanco.png" alt="Icono compra blanco" width="25" height="25" class="img-fluid float-left"><?php echo "$".$productito['precio'] . "<br />"; ?></p>
+                                <p class="listadoprecio"><img src="imagenes/iconos/iconocomprablanco.png" alt="Icono compra blanco" width="25" height="25" class="img-fluid float-left"><?php echo "$".$post->getPrecio() . "<br />"; ?></p>
                             </a>
                             </div>
                         </article>
@@ -197,14 +204,19 @@
         <?php
 
         $postGames = new gamesBussines($con);
-            foreach($postGames->getProductos() as $post){
-                echo '<pre>';echo var_dump($post);echo '</pre>';
-                /*echo $post->getNombre();
-                echo $post->getDescripcion();
-                echo $post->getDestacado();
-                echo $post->getPrecio();*/
-                
-        } ?>                  
+
+        foreach($postGames->getProductos() as $post){
+            echo '<pre>';echo var_dump($post);echo '</pre>';
+        }
+        foreach($postPlataforma->getPlataforma() as $postP){
+            echo '<pre>';echo var_dump($postP);echo '</pre>';
+        }
+        foreach($postCategoria->getCategoria() as $postC){
+            echo $postC->getNombre();
+            echo '<pre>';echo var_dump($postC);echo '</pre>'; 
+        }
+
+        ?>                  
 
     </main>
 
