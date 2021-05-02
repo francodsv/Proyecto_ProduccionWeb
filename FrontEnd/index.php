@@ -5,7 +5,7 @@
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
-    //include_once('../LogicaNegocio/gamesBussines.php');
+    /*include_once('../LogicaNegocio/gamesBussines.php');*/
 ?>
 
 <body>
@@ -136,27 +136,27 @@
 
                 </div>
                 </div>
+                <?php
+
+                $postGames = new gamesBussines($con);
+                foreach($postGames->getProductos() as $post){
+                ?> 
+                <h1>
+                <?php echo $post->getNombre(); ?> </h1>   
+   
+                <?php    
+                } ?>  
+
 
         </section>
         
-
-    //INTENTO TRAER EL NOMBRE
-        <?php
-
-        $postGames = new gamesBussines($con);
-        foreach($postGames->getProductos() as $post){
-        ?> 
-        <h1>
-        <?php echo $post->getNombre(); ?> </h1>   
-           // echo $post->getEntrada();; 
-        <?php    
-        } ?>                   
+                        
 
     </main>
 
     <?php  
     require "footer.php";
-?>
+    ?>
 
 
 </body>

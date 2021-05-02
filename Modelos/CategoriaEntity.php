@@ -11,3 +11,4 @@ class CategoryEntity extends BaseEntity {
     }
 
 }
+?>

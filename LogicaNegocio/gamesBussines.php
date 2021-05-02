@@ -17,7 +17,8 @@
 
         public function getProductos() {
 
-            return $this->ProductosDao->getAll();
+            $productos = $this->ProductosDao->getAll();
+            return $productos;
 
         }
 
