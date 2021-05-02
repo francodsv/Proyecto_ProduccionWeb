@@ -20,7 +20,7 @@
 
         }
 
-        public function getAll($id) {
+        public function getAll($where = array()) {
 
             $sql = "SELECT id_plataforma, nombre FROM plataforma";
             $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PlataformaEntity')->fetchAll();

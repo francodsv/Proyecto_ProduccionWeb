@@ -28,7 +28,7 @@
 
     }
 
-    public function getAll($id) {
+    public function getAll($where = array()) {
 
         $sql = "SELECT id_producto, id_desarrollador, id_plataforma, id_categoria, nombre, descripcion, precio, stock, destacado, calificacion, fechadelanzamiento FROM productos";
         $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'ProductosEntity')->fetchAll();
