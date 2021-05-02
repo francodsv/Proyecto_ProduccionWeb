@@ -4,40 +4,46 @@ require_once('BaseEntity.php');
 
 class ProductosEntity extends BaseEntity 
 {
-
-    protected $desarrollador;
-    protected $plataforma;
-    protected $categoria;
+    protected $id_producto;
+    protected $id_desarrollador;
+    protected $id_plataforma;
+    protected $id_categoria;
     protected $descripcion;
     protected $precio;
     protected $stock;
     protected $destacado;
     protected $calificacion;
-    protected $fechaLanzamiento; 
+    protected $fechadelanzamiento; 
     
     function __construct() {
 
         parent::__construct();
-        $this->desarrollador = array();
-        $this->plataforma = array();
-        $this->categoria = array();
+        $this->id_desarrollador = array();
+        $this->id_plataforma = array();
+        $this->id_categoria = array();
     }
 
-    public function getDesarrollador() {
+    public function getIDProducto() {
 
-        return $this->desarrollador;
-
-    }
-
-    public function getPlataforma() {
-
-        return $this->plataforma;
+        return $this->id_producto;
 
     }
 
-    public function getCategoria() {
+    public function getIDDesarrollador() {
 
-        return $this->categoria;
+        return $this->id_desarrollador;
+
+    }
+
+    public function getIDPlataforma() {
+
+        return $this->id_plataforma;
+
+    }
+
+    public function getIDCategoria() {
+
+        return $this->id_categoria;
 
     }
 
@@ -73,27 +79,33 @@ class ProductosEntity extends BaseEntity
 
     public function getFechaLanzamiento() {
 
-        return $this->fechaLanzamiento;
+        return $this->fechadelanzamiento;
 
     }
 
     /*--------------------------------------------------*/
 
-    public function setDesarrollador($desarrollador) {
+    public function setIDProducto($id_producto) {
 
-        $this->desarrollador = $desarrollador;
-
-    }
-
-    public function setPlataforma($plataforma) {
-
-        $this->plataforma = $plataforma;
+        $this->id_producto = $id_producto;
 
     }
 
-    public function setCategoria($categoria) {
+    public function setIDDesarrollador($id_desarrollador) {
 
-        $this->categoria = $categoria;
+        $this->id_desarrollador = $id_desarrollador;
+
+    }
+
+    public function setIDPlataforma($id_plataforma) {
+
+        $this->id_plataforma = $id_plataforma;
+
+    }
+
+    public function setIDCategoria($id_categoria) {
+
+        $this->id_categoria = $id_categoria;
 
     }
 
@@ -127,9 +139,9 @@ class ProductosEntity extends BaseEntity
 
     }
 
-    public function getFechaLanzamientoo($fechaLanzamiento) {
+    public function getFechaLanzamientoo($fechadelanzamiento) {
 
-        $this->fechaLanzamiento = $fechaLanzamiento;
+        $this->fechadelanzamiento = $fechadelanzamiento;
 
     }
 

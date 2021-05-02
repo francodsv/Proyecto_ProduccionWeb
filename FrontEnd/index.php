@@ -160,10 +160,10 @@
 
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <article class="card">
-                            <a href="detalleproductos.php?prod=<?php echo $post->getId()?>"><img src="imagenes/<?php echo $post->getId().'/caratula.jpg'?>" alt="Carátula <?php echo $post->getNombre()?>" width="580" height="730" class="img-fluid"></a>
-                            <h2><a href="detalleproductos.php?prod=<?php echo $post->getId()?>"><?php echo $post->getNombre() . "<br />"; ?></a></h2>
+                            <a href="detalleproductos.php?prod=<?php echo $post->getIDProducto()?>"><img src="imagenes/<?php echo $post->getIDProducto().'/caratula.jpg'?>" alt="Carátula <?php echo $post->getNombre()?>" width="580" height="730" class="img-fluid"></a>
+                            <h2><a href="detalleproductos.php?prod=<?php echo $post->getIDProducto()?>"><?php echo $post->getNombre() . "<br />"; ?></a></h2>
                             <div class="visualcard">
-                            <p><?php echo ucfirst(substr($post->getDescripcion(),0,125)); ?><a href="detalleproductos.php?prod=<?php echo $post->getId()?>"> Ver más...</a></p>
+                            <p><?php echo ucfirst(substr($post->getDescripcion(),0,125)); ?><a href="detalleproductos.php?prod=<?php echo $post->getIDProducto()?>"> Ver más...</a></p>
 
                             <p class="listadogenero">Género: <?php 
                         
@@ -198,11 +198,12 @@
 
         $postGames = new gamesBussines($con);
             foreach($postGames->getProductos() as $post){
-                
-                echo $post->getNombre();
+                echo '<pre>';echo var_dump($post);echo '</pre>';
+                /*echo $post->getNombre();
                 echo $post->getDescripcion();
                 echo $post->getDestacado();
-                echo $post->getId();
+                echo $post->getPrecio();*/
+                
         } ?>                  
 
     </main>
