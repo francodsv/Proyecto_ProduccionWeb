@@ -10,8 +10,8 @@
 <body>
 
     <?php
-            foreach($fprArray as $prod){ 
-            if($prod['codigo'] == $_GET['prod']){
+        foreach($postGames->getProductos() as $post){ 
+            if($post->getIDProducto == $_GET['prod']){
 						break;
 					}
 				}
@@ -60,13 +60,13 @@
 
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="imagenes/<?php echo $prod['codigo']. '/carouseln1.jpg' ?>" alt="Detalle 1 del juego" width="1000" height="500">
+                                    <img src="imagenes/<?php echo $post->getIDProducto. '/carouseln1.jpg' ?>" alt="Detalle 1 del juego" width="1000" height="500">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="imagenes/<?php echo $prod['codigo']. '/carouseln2.jpg' ?>" alt="Detalle 2 del juego" width="1000" height="500">
+                                    <img src="imagenes/<?php echo $post->getIDProducto. '/carouseln2.jpg' ?>" alt="Detalle 2 del juego" width="1000" height="500">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="imagenes/<?php echo $prod['codigo']. '/carouseln3.jpg' ?>" alt="Detalle 3 del juego" width="1000" height="500">
+                                    <img src="imagenes/<?php echo $post->getIDProducto. '/carouseln3.jpg' ?>" alt="Detalle 3 del juego" width="1000" height="500">
                                 </div>
                             </div>
 
@@ -79,8 +79,8 @@
 
                         </div>
 
-                        <h2><?php echo $prod['titulo']; ?></h2>
-                        <p><?php echo $prod['descripcioncompleta']; ?>
+                        <h2><?php echo $post->getNombre; ?></h2>
+                        <p><?php echo $post->getDescripcion; ?>
                         </p>
                         <div class="container">
                             <div class="detalletodos">

@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<?php 
-    ini_set('display_errors', '1');
-    ini_set('display_startup_errors', '1');
-    error_reporting(E_ALL);
-    include_once('../LogicaNegocio/gamesBussines.php');
-    include_once('../LogicaNegocio/categoriaBussines.php');
-    include_once('../LogicaNegocio/plataformaBussines.php');
-    include('../Helpers/conecction.php');
-?>
-
 <body>
 
     <?php 
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
     require_once "header.php";
     require_once "filtro.php";
-?>
+    ?>
 
     <main>
         <section>
@@ -157,10 +150,6 @@
 
                     <?php 
 
-                    $postGames = new gamesBussines($con);
-                    $postCategoria = new categoriaBussines($con);
-                    $postPlataforma = new plataformaBussines($con);
-                    
                     foreach ($postGames->getProductos() as $post) { 
                     
                     if($post->getDestacado()=='True') { ?>
@@ -181,9 +170,9 @@
                                     
                             <p class="listadoplataforma"><?php 
                         
-                        foreach($postPlataforma->getPlataforma() as $postP){
-                                if($postP->getIDPlataforma() == $post->getIDPlataforma()){
-                                    echo $postP->getNombre(). "<br />"; } } ?></p>
+                       /*foreach($postPlataforma->getPlataforma() as $postP){ */
+                       /*         if($postP->getIDPlataforma() == $post->getIDPlataforma()){ */
+                                    echo $post->getIDPlataforma(). "<br />"; } } ?></p>
                             <a href=#stophere>
                                 <p class="listadoprecio"><img src="imagenes/iconos/iconocomprablanco.png" alt="Icono compra blanco" width="25" height="25" class="img-fluid float-left"><?php echo "$".$post->getPrecio() . "<br />"; ?></p>
                             </a>
@@ -192,8 +181,8 @@
                     </div>
 
                     <?php 
-                            }
-                        }
+                           /* } 
+                        }*/
                     ?>
 
                 </div>

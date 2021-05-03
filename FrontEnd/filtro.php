@@ -1,7 +1,3 @@
-<?php 
-    require "funciones.php";
-  ?>
-  
    <div class="container">
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
@@ -12,11 +8,13 @@
                 </button>
                 <div class="dropdown-menu">
                     <?php
-                
-                    foreach(getDataFileArray('archivosjson/plataformas.json') as $plataformas){    
+                    $postGames = new gamesBussines($con);
+                    $postCategoria = new categoriaBussines($con);
+                    $postPlataforma = new plataformaBussines($con);
+                    foreach($postPlataforma->getPlataforma() as $postP){    
                 ?>
-                    <a class="dropdown-item" href="listadoproductos.php?plataformas=<?php echo $plataformas['id']?>&generos=<?php echo isset($_GET['generos'])?$_GET['generos']:''?>">
-                        <?php echo $plataformas['nombre']; ?>
+                    <a class="dropdown-item" href="listadoproductos.php?plataformas=<?php echo $postP->getIDPlataforma()?>&generos=<?php echo isset($_GET['generos'])?$_GET['generos']:''?>">
+                        <?php echo $postP->getNombre(); ?>
                     </a>
                     <?php
                     }
@@ -34,10 +32,10 @@
                 <div class="dropdown-menu">
                     <?php
                 
-                foreach(getDataFileArray('archivosjson/generos.json') as $generos){ 
+                foreach($postCategoria->getCategoria() as $postC){ 
                 ?>
-                    <a class="dropdown-item" href="listadoproductos.php?generos=<?php echo $generos['id']?>&plataformas=<?php echo isset($_GET['plataformas'])?$_GET['plataformas']:''?>">
-                        <?php echo $generos['nombre']; ?>
+                    <a class="dropdown-item" href="listadoproductos.php?generos=<?php echo $postC->getIDCategoria()?>&plataformas=<?php echo isset($_GET['plataformas'])?$_GET['plataformas']:''?>">
+                        <?php echo $postC->getNombre(); ?>
                     </a>
                     <?php
                     }
@@ -50,6 +48,3 @@
     </div>
 </div>
 
-<?php
-    $fprArray = getDataFileArray('archivosjson/productos.json');
-?>

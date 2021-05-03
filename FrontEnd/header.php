@@ -1,6 +1,8 @@
-
 <?php
-/*include_once('../LogicaNegocio/gamesBussines.php');*/
+    include_once('../LogicaNegocio/gamesBussines.php');
+    include_once('../LogicaNegocio/categoriaBussines.php');
+    include_once('../LogicaNegocio/plataformaBussines.php');
+    include('../Helpers/conecction.php');
 ?>
 
 <header>
