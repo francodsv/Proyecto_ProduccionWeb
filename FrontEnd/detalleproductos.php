@@ -11,7 +11,7 @@
 
     <?php
         foreach($postGames->getProductos() as $post){ 
-            if($post->getIDProducto == $_GET['prod']){
+            if($post->getIDProducto() == $_GET['prod']){
 						break;
 					}
 				}
@@ -19,7 +19,7 @@
 
     <main>
         <?php 
-        if(isset($_POST['comentar'])){
+        /*if(isset($_POST['comentar'])){
         $data = $_POST;
         unset($data['comentar']);
         $fecha = new DateTime();
@@ -37,14 +37,14 @@
         $fco = fopen('archivosjson/comentarios.json','w');
         fwrite($fco,json_encode($comentarioArray));
         fclose($fco);
-        } 
+        } */
  ?>
         <section>
             <div class="container" id="cuerpodetalle">
                 <div class="row">
                     <div class="col-sm-12">
 
-                        <h1 class="tituloseccioncontacto"><img src="imagenes/iconos/iconodetalle65.jpg" alt="Icono detalle tamaño 65" width="65" height="65" class="img-fluid rounded-circle"><?php echo $prod['titulo']; ?></h1>
+                        <h1 class="tituloseccioncontacto"><img src="imagenes/iconos/iconodetalle65.jpg" alt="Icono detalle tamaño 65" width="65" height="65" class="img-fluid rounded-circle"><?php echo $post->getNombre(); ?></h1>
                     </div>
                 </div>
 
@@ -60,13 +60,13 @@
 
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="imagenes/<?php echo $post->getIDProducto. '/carouseln1.jpg' ?>" alt="Detalle 1 del juego" width="1000" height="500">
+                                    <img src="imagenes/<?php echo $post->getIDProducto(). '/carouseln1.jpg' ?>" alt="Detalle 1 del juego" width="1000" height="500">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="imagenes/<?php echo $post->getIDProducto. '/carouseln2.jpg' ?>" alt="Detalle 2 del juego" width="1000" height="500">
+                                    <img src="imagenes/<?php echo $post->getIDProducto(). '/carouseln2.jpg' ?>" alt="Detalle 2 del juego" width="1000" height="500">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="imagenes/<?php echo $post->getIDProducto. '/carouseln3.jpg' ?>" alt="Detalle 3 del juego" width="1000" height="500">
+                                    <img src="imagenes/<?php echo $post->getIDProducto(). '/carouseln3.jpg' ?>" alt="Detalle 3 del juego" width="1000" height="500">
                                 </div>
                             </div>
 
@@ -79,38 +79,34 @@
 
                         </div>
 
-                        <h2><?php echo $post->getNombre; ?></h2>
-                        <p><?php echo $post->getDescripcion; ?>
+                        <h2><?php echo $post->getNombre(); ?></h2>
+                        <p><?php echo $post->getDescripcion(); ?>
                         </p>
                         <div class="container">
                             <div class="detalletodos">
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                                        <p><img src="imagenes/iconos/iconocalificacion50.png" alt="Icono calificación" width="50" height="50">Calificación: <?php echo $prod['calificacion'] . "/5"; ?></p>
+                                        <p><img src="imagenes/iconos/iconocalificacion50.png" alt="Icono calificación" width="50" height="50">Calificación: <?php echo $post->getCalificacion() . "/5"; ?></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                         <p><img src="imagenes/iconos/iconogenero50.png" alt="Icono género" width="50" height="50">Género: <?php 
                         
-                            foreach(getDataFileArray('archivosjson/generos.json') as $generito){
-                                if($generito['id'] == $prod['genero']){
-                                    echo $generito['nombre']. "<br />"; } } ?></p>
+                                    echo $post->getIDCategoria()->getNombre(). "<br />";?></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                                         <p><img src="imagenes/iconos/iconoplataforma50.png" alt="Icono plataforma" width="50" height="50">Plataforma: <?php 
- 
-                            foreach(getDataFileArray('archivosjson/plataformas.json') as $plataformita){
-                                if($plataformita['id'] == $prod['plataforma']){
-                                    echo $plataformita['nombre']. "<br />"; } } ?></p>
+
+                                    echo $post->getIDPlataforma()->getNombre(). "<br />";?></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                                        <p><img src="imagenes/iconos/iconofecha50.png" alt="Icono fecha de lanzamiento" width="50" height="50">Fecha de Lanzamiento: <?php echo $prod['fechadelanzamiento']; ?></p>
+                                        <p><img src="imagenes/iconos/iconofecha50.png" alt="Icono fecha de lanzamiento" width="50" height="50">Fecha de Lanzamiento: <?php echo $post->getFechaLanzamiento(); ?></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                                        <p><img src="imagenes/iconos/iconostock50.png" alt="Icono stock" width="50" height="50">Stock: <?php echo $prod['stock'] . " unidades disponibles"; ?></p>
+                                        <p><img src="imagenes/iconos/iconostock50.png" alt="Icono stock" width="50" height="50">Stock: <?php echo $post->getStock() . " unidades disponibles"; ?></p>
                                     </div>
 
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                                    <p><img src="imagenes/iconos/iconodesarrollador50.png" alt="Icono desarrollador" width="50" height="50">Desarrollado por: <?php echo $prod['desarrollador'];  ?></p>
+                                    <p><img src="imagenes/iconos/iconodesarrollador50.png" alt="Icono desarrollador" width="50" height="50">Desarrollado por: <?php echo $post->getIDDesarrollador()->getNombre();  ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +124,7 @@
                     <?php
                     $cantidad = 0;
                     foreach ($fprArray as $productito){
-                    if($prod['genero'] == $productito['genero']){
+                    if($prod['genero'] == $post->getIDCategoria()->getIDCategoria()){
                         if($prod['titulo'] != $productito['titulo']){
                             $cantidad++;
 							if($cantidad == 5) break; 
