@@ -14,8 +14,6 @@
     <main>
         <section>
 
-         
-
             <div class="container mt-3 d-xs-block">
                 <div id="micarousel" class="carousel slide" data-ride="carousel">
 
@@ -46,8 +44,6 @@
 
                 </div>
             </div>
-
-       
 
             <div id="iniciogrillaimg" class="container">
                 <div class="row">
@@ -82,68 +78,19 @@
             </div>
 
         </section>
-
-<!-- cards desde JSON
+   
         <section>
 
-                        <div class="container listadodivcards">
+            <div class="container listadodivcards">
 
                 <div class="row">
+
                     <div class="col-xs-12">
+
                         <h1 class="tituloseccion"><img src="imagenes/iconos/iconodestacados65.jpg" alt="Icono destacados tamaño 65" width="65" height="65" class="img-fluid rounded-circle"> Destacados</h1>
-                    </div>
-                </div>
 
-                <div class="row">
-
-                    <?php /* foreach ($fprArray as $productito) { 
-                    
-                    if($productito['destacado']) { ?>
-
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                        <article class="card">
-                            <a href="detalleproductos.php?prod=<?php echo $productito['codigo']?>"><img src="imagenes/<?php echo $productito['codigo']. '/caratula.jpg' ?>" alt="Carátula <?php echo $productito['titulo'] ?>" width="580" height="730" class="img-fluid"></a>
-                            <h2><a href="detalleproductos.php?prod=<?php echo $productito['codigo']?>"><?php echo $productito['titulo'] . "<br />"; ?></a></h2>
-                            <div class="visualcard">
-                            <p><?php echo ucfirst(substr($productito['descripcioncompleta'],0,125)); ?><a href="detalleproductos.php?prod=<?php echo $productito['codigo']?>"> Ver más...</a></p>
-
-                            <p class="listadogenero">Género: <?php 
-                        
-                            
-                        foreach(getDataFileArray('archivosjson/generos.json') as $generito){
-                                if($generito['id'] == $productito['genero']){
-                                    echo $generito['nombre']. "<br />"; } } ?></p>
-
-                            <p class="listadoplataforma"><?php 
-                        
-                        foreach(getDataFileArray('archivosjson/plataformas.json') as $plataformita){
-                                if($plataformita['id'] == $productito['plataforma']){
-                                    echo $plataformita['nombre']. "<br />"; } } ?></p>
-                            <a href=#stophere>
-                                <p class="listadoprecio"><img src="imagenes/iconos/iconocomprablanco.png" alt="Icono compra blanco" width="25" height="25" class="img-fluid float-left"><?php echo "$".$productito['precio'] . "<br />"; ?></p>
-                            </a>
-                            </div>
-                        </article>
                     </div>
 
-                    <?php 
-                            }
-                        }
-                   */ ?>
-
-                </div>
-                </div>
-                
-        </section> -->
-        
-        <section>
-
-                        <div class="container listadodivcards">
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1 class="tituloseccion"><img src="imagenes/iconos/iconodestacados65.jpg" alt="Icono destacados tamaño 65" width="65" height="65" class="img-fluid rounded-circle"> Destacados</h1>
-                    </div>
                 </div>
 
                 <div class="row">
@@ -162,37 +109,37 @@
                             <p><?php echo ucfirst(substr($post->getDescripcion(),0,125)); ?><a href="detalleproductos.php?prod=<?php echo $post->getIDProducto()?>"> Ver más...</a></p>
                             
                             <p class="listadogenero">Género: <?php  
-                        
-                            
-                        foreach($postCategoria->getCategoria() as $postC){
-                                if($postC->getIDCategoria() == $post->getIDCategoria()){
-                                    echo $postC->getNombre(). "<br />"; } } ?></p> 
+
+                            echo $post->getIDCategoria()->getNombre(). "<br />";?></p> 
                                     
                             <p class="listadoplataforma"><?php 
-                        
-                       /*foreach($postPlataforma->getPlataforma() as $postP){ */
-                       /*         if($postP->getIDPlataforma() == $post->getIDPlataforma()){ */
-                                    echo $post->getIDPlataforma(). "<br />"; } } ?></p>
+
+                            echo $post->getIDPlataforma()->getNombre(). "<br />";   ?></p>
+
                             <a href=#stophere>
                                 <p class="listadoprecio"><img src="imagenes/iconos/iconocomprablanco.png" alt="Icono compra blanco" width="25" height="25" class="img-fluid float-left"><?php echo "$".$post->getPrecio() . "<br />"; ?></p>
                             </a>
+
                             </div>
+
                         </article>
+
                     </div>
 
                     <?php 
-                           /* } 
-                        }*/
+                            }
+                        }
                     ?>
 
                 </div>
-                </div>
+
+            </div>
                 
         </section>
 
         <?php
 
-        $postGames = new gamesBussines($con);
+        //$postGames = new gamesBussines($con);
 
         foreach($postGames->getProductos() as $post){
             echo '<pre>';echo var_dump($post);echo '</pre>';
@@ -212,7 +159,6 @@
     <?php  
     require "footer.php";
     ?>
-
 
 </body>
 

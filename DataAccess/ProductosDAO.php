@@ -39,22 +39,14 @@ class ProductosDAO extends DAO {
         $sql = "SELECT id_producto, id_desarrollador, id_plataforma, id_categoria, nombre, descripcion, precio, stock, destacado, calificacion, fechadelanzamiento FROM $this->table";
         $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'ProductosEntity')->fetchAll();
 
-<<<<<<< HEAD
-  /*      foreach($resultado as $index=>$res){
-            $resultado[$index]->setIDDesarrollador($this->DesarrolladorDao->getOne($res->getIDDesarrollador()));
-            $resultado[$index]->setIDPlataforma($this->PlataformaDao->getOne($res->getIDPlataforma()));
-            $resultado[$index]->setIDCategoria($this->CategoriaDao->getOne($res->getIDCategoria()));
-=======
 
 
         foreach($resultado as $index=>$res){
             $resultado[$index]->setIDDesarrollador($this->DesarrolladorDao->getOne($res->getIDDesarrollador()));
             $resultado[$index]->setIDPlataforma($this->PlataformaDao->getOne($res->getIDPlataforma()));
             $resultado[$index]->setIDCategoria($this->CategoriaDao->getOne($res->getIDCategoria()));
-
->>>>>>> 9190573b65937a936c5aa8860c252d394ff224d3
         }
-*/
+        
     return $resultado;
 
     }
