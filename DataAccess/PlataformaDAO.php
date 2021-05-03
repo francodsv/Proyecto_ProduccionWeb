@@ -14,9 +14,15 @@
 
         public function getOne($id) {
         
-            $sql = "SELECT id_plataforma, nombre FROM $this->table WHERE id_plataforma = $id";
-            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PlataformaEntity')->fetch();
-            return $resultado;
+            
+            try{
+                $sql = "SELECT id_plataforma, nombre FROM $this->table WHERE id_plataforma = $id";
+                $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PlataformaEntity')->fetch();
+                return $resultado;
+            }catch (PDOException $e) {
+                print "¡Error!: " . $e->getMessage();
+                die();
+            }
 
         }
 

@@ -18,9 +18,9 @@ class ProductosEntity extends BaseEntity
     function __construct() {
 
         parent::__construct();
-        $this->id_desarrollador = array();
-        $this->id_plataforma = array();
-        $this->id_categoria = array();
+        // $this->id_desarrollador = array();
+        // $this->id_plataforma = array();
+        // $this->id_categoria = array();`
     }
 
     public function getIDProducto() {

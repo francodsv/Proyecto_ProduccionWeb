@@ -12,10 +12,16 @@
         }
 
         public function getOne($id){
-
-            $sql = "SELECT id_desarrollador,nombre FROM $this->table WHERE id_desarrollador = $id";
-            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'DesarrolladorEntity')->fetch();
-            return $resultado;
+            try{
+                $sql = "SELECT id_desarrollador,nombre FROM $this->table WHERE id_desarrollador = $id";
+                $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'DesarrolladorEntity')->fetch();
+                return $resultado;
+            }catch (PDOException $e) {
+                print "¡Error!: " . $e->getMessage();
+                die();
+            }
+        
+            
             
         }  
 
