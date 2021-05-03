@@ -12,10 +12,16 @@
         }
 
         public function getOne($id) {
-        
-            $sql = "SELECT id_categoria, nombre FROM $this->table WHERE id_categoria = $id";
-            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'CategoriaEntity')->fetch();
-            return $resultado;
+           
+            try{
+                $sql = "SELECT id_categoria, nombre FROM $this->table WHERE id_categoria = $id";
+                $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'CategoriaEntity')->fetch();
+                return $resultado;
+            }catch (PDOException $e) {
+                print "¡Error!: " . $e->getMessage();
+                die();
+            }
+            
 
         }
 
