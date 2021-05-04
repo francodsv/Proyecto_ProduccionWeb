@@ -13,10 +13,10 @@
                         $postGames = new gamesBussines($con);
                         $postCategoria = new categoriaBussines($con);
                         $postPlataforma = new plataformaBussines($con);
-                        foreach($postGames->getProductos() as $post){    
+                        foreach($postPlataforma->getPlataforma() as $postP){    
                     ?>
-                            <a class="dropdown-item" href="listadoproductos.php?plataformas=<?php echo $post->getIDPlataforma()->getIDPlataforma()?>&generos=<?php echo isset($_GET['generos'])?$_GET['generos']:''?>">
-                            <?php echo $post->getIDPlataforma()->getNombre(); ?>
+                            <a class="dropdown-item" href="listadoproductos.php?plataformas=<?php echo $postP->getIDPlataforma()?>&generos=<?php echo isset($_GET['generos'])?$_GET['generos']:''?>">
+                            <?php echo $postP->getNombre(); ?>
                             </a>
                     <?php
                     }
@@ -35,10 +35,10 @@
                 <div class="dropdown-menu">
                     <?php
                 
-                foreach($postGames->getProductos() as $post){ 
+                foreach($postCategoria->getCategoria() as $postC){ 
                 ?>
-                    <a class="dropdown-item" href="listadoproductos.php?generos=<?php echo $post->getIDCategoria()->getIDCategoria()?>&plataformas=<?php echo isset($_GET['plataformas'])?$_GET['plataformas']:''?>">
-                        <?php echo $post->getIDCategoria()->getNombre(); ?>
+                    <a class="dropdown-item" href="listadoproductos.php?generos=<?php echo $postC->getIDCategoria()?>&plataformas=<?php echo isset($_GET['plataformas'])?$_GET['plataformas']:''?>">
+                        <?php echo $postC->getNombre(); ?>
                     </a>
                     <?php
                     }
