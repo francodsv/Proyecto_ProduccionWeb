@@ -135,24 +135,7 @@
 
             </div>
                 
-        </section>
-
-        <?php
-
-        //$postGames = new gamesBussines($con);
-
-        foreach($postGames->getProductos() as $post){
-            echo '<pre>';echo var_dump($postGames->getProductos());echo '</pre>';
-        }
-        foreach($postPlataforma->getPlataforma() as $postP){
-            echo '<pre>';echo var_dump($postP);echo '</pre>';
-        }
-        foreach($postCategoria->getCategoria() as $postC){
-            echo $postC->getNombre();
-            echo '<pre>';echo var_dump($postC);echo '</pre>'; 
-        }
-
-        ?>                  
+        </section>                 
 
     </main>
 
