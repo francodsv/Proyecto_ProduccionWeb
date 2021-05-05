@@ -30,7 +30,6 @@
                 <li class="nav-item"><a class="nav-link" href="index.php"><img src="imagenes/iconos/iconologo30.jpg" alt="Icono logo" width="30" height="30" class="img-fluid rounded-circle float-left">GAMESTORE</a></li>
                 <li class="nav-item"><a class="nav-link" href="listadoproductos.php"><img src="imagenes/iconos/iconocatalogo30.png" alt="Icono catálogo 30" width="30" height="30" class="img-fluid float-left">CATÁLOGO</a></li>
                 <li class="nav-item"><a class="nav-link" href="contacto.php"><img src="imagenes/iconos/iconocontacto30.png" alt="Icono contacto 30" width="30" height="30" class="img-fluid float-left">CONTACTO</a></li>
-                <li class="nav-item"><a class="nav-link" href="pruebaProductos.php"><img src="imagenes/iconos/iconocontacto30.png" alt="Icono contacto 30" width="30" height="30" class="img-fluid float-left">Prueba</a></li>
             </ul>
         </div>
     </nav>

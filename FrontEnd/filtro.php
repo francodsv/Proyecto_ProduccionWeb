@@ -33,7 +33,7 @@
                     
                 </button>
                 <div class="dropdown-menu">
-                    <?php
+                <?php
                 
                 foreach($postCategoria->getCategoria() as $postC){ 
                 ?>

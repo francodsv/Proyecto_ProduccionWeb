@@ -1,5 +1,4 @@
 <?php
-
     require_once('../Config/DataBase.php');
 
     try{
@@ -9,7 +8,6 @@
         print "¡Error!: " . $e->getMessage();
         die();
     }
-
 ?>
 
 

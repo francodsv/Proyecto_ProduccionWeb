@@ -117,15 +117,15 @@
 
 
         </section>
-        <section>
+<!--        <section>
             <div class="container listadodivcards">
                 <h3>¿Te gustó este juego? ¡No te pierdas los siguientes!</h3>
                 <div class="row">
                     <?php
                     $cantidad = 0;
-                    foreach ($fprArray as $productito){
+                    foreach ($postGames->getProductos() as $post){
                     if($prod['genero'] == $post->getIDCategoria()->getIDCategoria()){
-                        if($prod['titulo'] != $productito['titulo']){
+                        if($prod['titulo'] != $post->getNombre()){
                             $cantidad++;
 							if($cantidad == 5) break; 
 					?>
@@ -134,7 +134,7 @@
                         <article class="card cardmini">
                             <a href="detalleproductos.php?prod=<?php echo $productito['codigo']?>"><img src="imagenes/<?php echo $productito['codigo']. '/caratulamin.jpg' ?>" alt="Carátula <?php echo $productito['titulo'] ?>" width="290" height="365" class="img-fluid"></a>
                             <a href="detalleproductos.php?prod=<?php echo $productito['codigo']?>">
-                                <h4><?php echo $productito['titulo'] . "<br />"; ?></h4>
+                                <h4><?php echo $post->getNombre() . "<br />"; ?></h4>
                             </a>
                             <div class="visualcardmini">
                                 <p><?php echo ucfirst(substr($productito['descripcioncompleta'],0,65)); ?><a href="detalleproductos.php?prod=<?php echo $productito['codigo']?>"> Ver más...</a></p>
@@ -158,13 +158,13 @@
                         </article>
                     </div>
                     <?php
-                            }
+                           } 
                         }    
-                    }
-                    ?>
+                     }  
+                   ?>
                 </div>
             </div>
-        </section>
+        </section> -->
         <section>
 
             <div class="container listadodivcards">
