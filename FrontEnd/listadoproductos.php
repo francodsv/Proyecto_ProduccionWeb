@@ -21,24 +21,8 @@
                 <div class="row">
 
                     <?php 
-                    foreach($postGames->getProductos() as $post){ 
-					$flagPrint = true;
-					if(!empty($_GET['plataformas'])  AND $flagPrint ){
-						if($_GET['plataformas'] == $post->getIDPlataforma()->getIDPlataforma()){
-							$flagPrint = true;
-						}else{
-							$flagPrint = false;
-						}
-					}
-					if(!empty($_GET['generos']) AND $flagPrint){
-						if($_GET['generos'] == $post->getIDCategoria()->getIDCategoria()){
-							$flagPrint = true;
-						}else{
-							$flagPrint = false;
-						}
-					}
-					
-					if($flagPrint){ ?>
+                    foreach($postGames->getProductos($_GET) as $post){ 
+                        ?>
 
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
                         <article class="card">
@@ -67,7 +51,7 @@
                         
                     <?php 
                         }
-                    }
+                    
                     ?>
 
                 </div>

@@ -36,7 +36,15 @@ class ProductosDAO extends DAO {
 
     public function getAll($where = array()) {
 
-        $sql = "SELECT id_producto, id_desarrollador, id_plataforma, id_categoria, nombre, descripcion, precio, stock, destacado, calificacion, fechadelanzamiento FROM $this->table";
+        $sql = "SELECT id_producto, id_desarrollador, id_plataforma, id_categoria, nombre, descripcion, precio, stock, destacado, calificacion, fechadelanzamiento FROM $this->table where 1=1";
+        
+        if(!empty($where['plataformas'])){
+            $sql.= ' and id_plataforma='.$where['plataformas'];
+        }
+        if(!empty($where['generos'])){
+            $sql.= ' and id_categoria='.$where['generos'];
+        }
+        
         $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'ProductosEntity')->fetchAll();
 
         foreach($resultado as $index=>$res){
