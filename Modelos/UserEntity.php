@@ -13,7 +13,7 @@ class usuarioEntity extends BaseEntity
     public function __construct() 
     {
         parent::__construct();
-        this->permisos = array();
+        $this->permisos = array();
     }
 
     public function getId() 
