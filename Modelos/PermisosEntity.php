@@ -30,7 +30,7 @@ class PermisosEntity {
     }
 
     public function setCod($cod){
-        $this->code = $cod;
+        $this->cod = $cod;
     }
 
     public function getModulo(){

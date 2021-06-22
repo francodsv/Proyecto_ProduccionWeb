@@ -46,7 +46,7 @@
             $sql = '';
             foreach($perfiles as $perfil) 
             {
-                $sql .= 'InSERT INTO usuario_perfil VALUES('.$id.','-$perfil.');'
+                $sql .= 'INSERT INTO usuario_perfil VALUES('.$id.','-$perfil.');';
             }
 
             $this->con->exec($sql);
