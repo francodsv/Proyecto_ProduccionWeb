@@ -17,7 +17,7 @@
             $usuario = $this->UsuarioDao->getOne($datos['usuario'],'usuario');
             if(!empty($usuario)){
                 if(password_verify($datos['pass'],$usuario->getPass())){
-                    $_SESSION['usuario']['id'] = $usuario->getIDUsuario();
+                    $_SESSION['usuario']['id_usuario'] = $usuario->getIDUsuario();
                     $_SESSION['usuario']['usuario'] = $usuario->getUsuario();
                     $_SESSION['usuario']['mail'] = $usuario->getMail();
                     $_SESSION['usuario']['pass'] = $usuario->getPass();
@@ -30,7 +30,7 @@
         }
 
         function getPermisos($usuario){
-            $permisos = array();
+            $permiso = array();
             foreach($usuario->getPerfiles() as $perfil) {
                 foreach($perfil->getPermisos() as $permiso) {
                     $permiso['cod'][] = $permiso->getCode();
@@ -43,12 +43,12 @@
             unset($_SESSION['usuario']);
         }
 
-        function isLoged() {
-            if(!empty($_SESSION['usuario']->getIDUsuario())){
+       function isLoged() {
+            if(!empty($_SESSION['usuario']['id_usuario'])){
                 return true;
             }
             return false;
-        }
+        } 
 
     }
 

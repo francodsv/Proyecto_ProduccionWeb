@@ -15,7 +15,7 @@
 
         public function getProductos($datos=array()) {
 
-            $productos = $this->ProductosDao->getAll($datos);
+            $productos = $this->productosDao->getAll($datos);
            /* echo '<pre>'; var_dump($productos);echo '</pre>'; */
             return $productos;
 

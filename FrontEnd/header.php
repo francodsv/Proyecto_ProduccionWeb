@@ -4,24 +4,26 @@
     include_once('../LogicaNegocio/categoriaBussines.php');
     include_once('../LogicaNegocio/plataformaBussines.php');
     include_once('../LogicaNegocio/loginBussines.php');
- /* include_once('../LogicaNegocio/perfilBussines');
-    include_once('../LogicaNegocio/userBussines.php'); */
+    include_once('../LogicaNegocio/perfilBussines.php');
+    include_once('../LogicaNegocio/userBussines.php'); 
     include('../Helpers/conecction.php');
     $loginB = new loginBussines($con);
+    $bUser = new userBussines($con);
+    //$bPerfil = new perfilBussines($con);
 
     if(isset($_POST['login'])) 
     {
-        $loginB->loginUser($_POST);
+        $loginB->login($_POST);
     }
 
     if(isset($_GET['logout'])) 
     {
         $loginB->logout();
     }
-    if(!$loginB->isLoged())
+    /*if(!$loginB->isLoged())
     {
-        header('Location:login.php');
-    }
+        header('Location:login.php');     ES PARA QUE SI NO ESTAMOS LOGUEADOS NOS LLEVE AL LOGIN.PHP
+    }*/
 ?>
 
 <header>

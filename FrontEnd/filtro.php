@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="btn-group">
+            <!-- <div class="btn-group">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 
                 Ordenar de la A>Z
@@ -56,7 +56,7 @@
                 </button>
                 
                 <div class="dropdown-menu">
-                    <?php
+                    <?php /*
                         $postGames = new gamesBussines($con);
                         $postCategoria = new categoriaBussines($con);
                         $postPlataforma = new plataformaBussines($con);
@@ -69,9 +69,9 @@
                     }
                     ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="listadoproductos.php?plataformas=&generos=<?php echo isset($_GET['generos'])?$_GET['generos']:''?>">Eliminar filtro</a>
+                    <a class="dropdown-item" href="listadoproductos.php?plataformas=&generos=<?php echo isset($_GET['generos'])?$_GET['generos']:'' */?>">Eliminar filtro</a>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>

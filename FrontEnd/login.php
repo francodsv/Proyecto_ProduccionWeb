@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<?php 
+    require "header.php";
+    
+?>
+<body>
 
 <form action="index.php" method="post">
   <div class="imgcontainer">
@@ -20,3 +26,9 @@
     
   </div>
 </form>
+
+<pre> <?php echo var_dump($bUser->getUser('1'));?> </pre>
+
+</body>
+
+</html>

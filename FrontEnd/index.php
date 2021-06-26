@@ -125,7 +125,7 @@
                         </article>
 
                     </div>
-
+                    <pre> <?php echo var_dump($postGames->getProductos());?> </pre>
                     <?php 
                             }
                         }

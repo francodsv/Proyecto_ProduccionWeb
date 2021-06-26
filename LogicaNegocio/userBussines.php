@@ -3,7 +3,7 @@
     include_once('../DataAccess/UsuarioDAO.php');
   
 
-    class plataformaBussines {
+    class userBussines {
 
         protected $UsuarioDao;
 
@@ -13,9 +13,9 @@
 
         }
 
-        public function getUser($id) {
+        public function getUser($id_usuario) {
 
-            $user = $this->UsuarioDao->getOne();
+            $user = $this->UsuarioDao->getOne($id_usuario);
             return $user;
 
         }
@@ -35,7 +35,7 @@
 
         public function modifyUser($id, $datos) 
         {
-            if(empty($datos[pass])) 
+            if(empty($datos['pass'])) 
             {
                 $datos['pass'] = password_hash($datos['pass'],PASSWORD_DEFAULT);
             }

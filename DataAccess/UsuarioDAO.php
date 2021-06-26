@@ -11,14 +11,14 @@
         public function __construct($con) {
 
             parent::__construct($con);
-            $this->table = 'usuario';
+            $this->table = 'usuarios';
             $this->perfilDAO = new PerfilDAO($con);
         }
 
         public function getOne($data, $by = 'id_usuario') {
 
             $sql = "SELECT id_usuario,usuario,pass,mail FROM $this->table WHERE $by = '$data'";
-            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'UserEntity')->fetch();
+            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'UsuarioEntity')->fetch();
             if($resultado){
                 $resultado->setPerfiles($this->perfilDAO->getAllByUser($resultado->getIDUsuario()));
             }else{
@@ -32,14 +32,14 @@
         public function getAll($where = array()) {
 
             $sql = "SELECT id_usuario, nombre, pass, mail FROM $this->table";
-            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'UserEntity')->fetchAll();
+            $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'UsuarioEntity')->fetchAll();
             return $resultado;
 
         }
 
         public function save($datos = array()) 
         {   
-            $perfil = $datos['perfil'];
+            $perfiles = $datos['perfil'];
             unset($datos['perfil']);
 
             $save = parent::save($datos); 
@@ -61,7 +61,7 @@
 
         public function modify($id, $datos = array()) 
         {
-            $perfil = $datos['perfil'];
+            $perfiles = $datos['perfil'];
             unset($datos['perfil']);
             $modify = parent::modify($id, $datos);
         
