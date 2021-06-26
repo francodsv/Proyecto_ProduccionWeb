@@ -9,6 +9,7 @@ class usuarioEntity extends BaseEntity
     protected $mail;
     protected $usuario;
     protected $pass;
+    private $perfiles;
     
     public function __construct() 
     {
@@ -36,6 +37,11 @@ class usuarioEntity extends BaseEntity
         return $this->pass;
     }
 
+    public function getPerfiles()
+    {
+        return $this->perfiles;
+    }
+
 
 
     public function setId($id_usuario) 
@@ -56,6 +62,15 @@ class usuarioEntity extends BaseEntity
     public function setpass($pass) 
     {
          $this->pass = $pass;
+    }
+
+    public function poseePerfil($id_usuario){
+        foreach($this->getPerfiles() as $perfil){
+            if($perfil->getId() == $id_usuario){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

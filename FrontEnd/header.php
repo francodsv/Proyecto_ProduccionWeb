@@ -1,8 +1,25 @@
 <?php
+    session_start();
     include_once('../LogicaNegocio/gamesBussines.php');
     include_once('../LogicaNegocio/categoriaBussines.php');
     include_once('../LogicaNegocio/plataformaBussines.php');
+    include_once('../LogicaNegocio/loginBussiness.php');
     include('../Helpers/conecction.php');
+    $loginB = new loginBussines($con);
+
+    if(isset($_POST['login'])) 
+    {
+        $loginB->loginUser($_POST);
+    }
+
+    if(isset($_GET['logout'])) 
+    {
+        $loginB->logout();
+    }
+    if(!$loginB->isLoged())
+    {
+        header('Location:login.php');
+    }
 ?>
 
 <header>
