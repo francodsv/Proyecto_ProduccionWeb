@@ -5,11 +5,11 @@
 
     class loginBussines {
 
-        protected $UsuarioDao;
+        protected $usuarioDao;
 
         function __construct($con) {
 
-            $this->UsuarioDao = new UsuarioDAO($con);
+            $this->usuarioDao = new UsuarioDAO($con);
 
         }
 
@@ -18,7 +18,7 @@
             $usuario = $this->UsuarioDao->getOne($datos['usuario'], 'usuario');
             password_verify($datos['pass'],$usuario['pass'])
             {
-                $_SESSION['usuario']['id'] = $usuario->getId();
+                $_SESSION['usuario']['id'] = $usuario->getIDusuario();
                 $_SESSION['usuario']['usuario'] = $usuario->getUsuario();
                 $_SESSION['usuario']['mail'] = $usuario->getMail();
                 $_SESSION['usuario']['pass'] = $usuario->getPass();
@@ -47,7 +47,7 @@
 
         function isLoged() 
         {
-            if(!empty($_SESSION['usuario']->getId())) 
+            if(!empty($_SESSION['usuario']->getIDUsuario())) 
             {
                 return true;
             }
