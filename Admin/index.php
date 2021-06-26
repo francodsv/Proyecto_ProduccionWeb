@@ -6,7 +6,7 @@ session_start();
 include('../Helpers/conecction.php');
 include('../LogicaNegocio/loginBussines.php');
 
-loginB = new loginBussines($con);
+$loginB = new loginBussines($con);
 
     if(isset($_POST['login'])) 
     {
@@ -25,3 +25,4 @@ loginB = new loginBussines($con);
 ?>
 
 <a href="?logout">Salir</a>
+
