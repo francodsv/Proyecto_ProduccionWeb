@@ -1,31 +1,25 @@
 <?php
  
-class PermisosEntity {
+class PermisosEntity extends BaseEntity {
 
-    protected $id;
-    protected $nombre;
+    protected $id_permiso;
     protected $cod;
     protected $modulo;
 
+    public function __construct(){
+        //$this->permisos = array();
+        parent::__construct();
+    }
      
-    public function getId(){
-        return $this->id;
+    public function getIDPermisos(){
+        return $this->id_permiso;
     } 
 
-    public function setId($id){
-        $this->id = $id;
-    }
- 
-    
-    public function getNombre(){
-        return $this->nombre;
+    public function setIDPermisos($id_permiso){
+        $this->id_permiso = $id_permiso;
     }
 
-    public function setNombre($nombre){
-        $this->nombre = $nombre;
-    }
-
-  public function getCod(){
+    public function getCod(){
         return $this->cod;
     }
 
@@ -38,7 +32,7 @@ class PermisosEntity {
     }
 
     public function setModulo($modulo){
-        $this->module = $modulo;
+        $this->modulo = $modulo;
     }
 }
 

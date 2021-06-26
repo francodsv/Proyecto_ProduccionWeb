@@ -4,31 +4,29 @@ require_once('BaseEntity.php');
 
 class PerfilEntity extends BaseEntity{
 
-    protected $nombre;
-    protected $permisos;
- 
+    protected $id_perfil;
+    
+    
     public function __construct(){
-        $this->permisos = array();
+        //$this->id_perfil = array();
         parent::__construct();
     }
 
-    public function getNombre(){
-        return $this->nombre;
+    public function getIDPerfil(){
+        return $this->id_perfil;
     }
 
-    public function setNombre($nombre){
-        $this->nombre = $nombre;
+    public function setIDPerfil($id_perfil){
+        $this->id_perfil = $id_perfil;
+    }
+    
+    public function getIDPerfil(){
+        return $this->id_perfil;
     }
 
-    public function getPermisos(){
-        return $this->permisos;
+    public function setIDPerfil($id_perfil){
+        $this->id_perfil = $id_perfil;
     }
-
-    public function setPermisos($permisos){
-        $this->permisos = $permisos;
-    }
-  
-
 }
 
 

@@ -52,8 +52,9 @@ abstract class DAO{
         }
         */
 
-        $sql = "UPDATE ".$this->table." SET ".implode(',',$set).", fechaModificacion = now() WHERE id = ".$id;
-         
+        //$sql = "UPDATE ".$this->table." SET ".implode(',',$set).", fechaModificacion = now() WHERE id = ".$id;
+        $sql = "UPDATE ".$this->table." SET ".implode(',',$set)."WHERE id = ".$id; 
+
          return $this->con->exec($sql);
     }
     

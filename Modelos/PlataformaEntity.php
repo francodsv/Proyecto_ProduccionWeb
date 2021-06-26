@@ -2,8 +2,8 @@
 
 require_once('BaseEntity.php');
 
-class PlataformaEntity extends BaseEntity
-{
+class PlataformaEntity extends BaseEntity {
+    
     protected $id_plataforma;
 
     function __construct() {

@@ -6,12 +6,12 @@ require_once('../Modelos/PerfilEntity.php');
 
 class PerfilDAO extends DAO{
 
-    protected $permisoDAO;
+    protected $perfilDAO;
 
     public function __construct($con){
         $this->table = 'perfil';
         parent::__construct($con);
-        $this->permisoDAO = new PermisosDAO($con);
+        $this->perfilDAO = new PerfilDAO($con);
     }
 
    
@@ -26,21 +26,21 @@ class PerfilDAO extends DAO{
 
     }
 
-    public function getAllByUser($userid_perfil){
+    public function getAllByUser($id_perfil){
         $sql = "SELECT id_perfil, nombre  
                 FROM perfil
                 INNER JOIN usuario_perfil ON user_perfil.perfil = perfil.id_perfil
-                WHERE user = ".$userid_perfil ;  
+                WHERE user = ".$id_perfil;  
         $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PerfilEntity')->fetchAll();
         foreach($resultado as $index=>$perfil){
-            $resultado[$index]->setPermisos($this->permisoDAO->getAllByPerfil($perfil->getid_perfil()));
+            $resultado[$index]->setPermisos($this->permisoDAO->getAllByPerfil($perfil->getIDPerfil()));
         }
         return $resultado;
 
     }
     
     public function getOne($id_perfil){
-            $sql = "SELECT nombre, active FROM perfil WHERE id_perfil = ".$id_perfil;
+            $sql = "SELECT id_perfil, nombre FROM perfil WHERE id_perfil = ".$id_perfil;
             $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PerfilEntity')->fetch();
             $resultado->setPermisos($this->permisoDAO->getAllByPerfil($id_perfil));
 

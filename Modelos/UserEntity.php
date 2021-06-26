@@ -17,7 +17,7 @@ class usuarioEntity extends BaseEntity
         $this->permisos = array();
     }
 
-    public function getId() 
+    public function getIDUsuario() 
     {
         return $this->id_usuario;
     }
@@ -44,7 +44,7 @@ class usuarioEntity extends BaseEntity
 
 
 
-    public function setId($id_usuario) 
+    public function setIDUsuario($id_usuario) 
     {
          $this->id_usuario = $id_usuario;
     }
@@ -66,7 +66,7 @@ class usuarioEntity extends BaseEntity
 
     public function poseePerfil($id_usuario){
         foreach($this->getPerfiles() as $perfil){
-            if($perfil->getId() == $id_usuario){
+            if($perfil->getIDUsuario() == $id_usuario){
                 return true;
             }
         }
