@@ -6,12 +6,12 @@ require_once('../Modelos/PerfilEntity.php');
 
 class PerfilDAO extends DAO{
 
-    protected $perfilDAO;
+    protected $permisoDAO;
 
     public function __construct($con){
         $this->table = 'perfil';
         parent::__construct($con);
-        $this->perfilDAO = new PerfilDAO($con);
+        $this->permisoDAO = new PermisosDAO($con);
     }
 
    
@@ -86,6 +86,5 @@ class PerfilDAO extends DAO{
         }
     }
 } 
-
 
 ?>

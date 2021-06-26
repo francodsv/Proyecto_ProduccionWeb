@@ -8,7 +8,7 @@
        
         protected $perfilDAO;
 
-        function __construct($con) {
+        public function __construct($con) {
 
             parent::__construct($con);
             $this->table = 'usuario';
@@ -22,7 +22,7 @@
             if($resultado){
                 $resultado->setPerfiles($this->perfilDAO->getAllByUser($resultado->getIDUsuario()));
             }else{
-                $resultado = new UserEntity();
+                $resultado = new UsuarioEntity();
             }
     
             return $resultado;
