@@ -20,13 +20,6 @@ class PerfilEntity extends BaseEntity{
         $this->id_perfil = $id_perfil;
     }
     
-    public function getIDPerfil(){
-        return $this->id_perfil;
-    }
-
-    public function setIDPerfil($id_perfil){
-        $this->id_perfil = $id_perfil;
-    }
 }
 
 

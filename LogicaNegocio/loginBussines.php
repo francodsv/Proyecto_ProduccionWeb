@@ -3,52 +3,48 @@
     include_once('../DataAccess/UsuarioDAO.php');
   
 
-    class loginBussines {
+    class loginBussines{
 
         protected $usuarioDao;
 
-        function __construct($con) {
+        function __construct($con){
 
             $this->usuarioDao = new UsuarioDAO($con);
 
         }
 
-        function login($datos = array()) 
-        {
-            $usuario = $this->UsuarioDao->getOne($datos['usuario'], 'usuario');
-            password_verify($datos['pass'],$usuario['pass'])
-            {
-                $_SESSION['usuario']['id'] = $usuario->getIDusuario();
-                $_SESSION['usuario']['usuario'] = $usuario->getUsuario();
-                $_SESSION['usuario']['mail'] = $usuario->getMail();
-                $_SESSION['usuario']['pass'] = $usuario->getPass();
-                $_SESSION['usuario']['permisos'] = $this->getPermisos($usuario);
-                
+        function login($datos = array()){
+            $usuario = $this->UsuarioDao->getOne($datos['usuario'],'usuario');
+            if(!empty($usuario)){
+                if(password_verify($datos['pass'],$usuario->getPass())){
+                    $_SESSION['usuario']['id'] = $usuario->getIDUsuario();
+                    $_SESSION['usuario']['usuario'] = $usuario->getUsuario();
+                    $_SESSION['usuario']['mail'] = $usuario->getMail();
+                    $_SESSION['usuario']['pass'] = $usuario->getPass();
+                    $_SESSION['usuario']['permisos'] = $this->getPermisos($usuario);
+                }
+            }else{
+                return false;
             }
+            return true;
         }
 
-        function getPermisos($usuario) 
-        {
+        function getPermisos($usuario){
             $permisos = array();
-            foreach($usuario->getPerfiles() as $perfil) 
-            {
-                foreach($perfil->getPermisos() as $permiso) 
-                {
+            foreach($usuario->getPerfiles() as $perfil) {
+                foreach($perfil->getPermisos() as $permiso) {
                     $permiso['cod'][] = $permiso->getCode();
                     $permiso['modulo'][] = $permiso->getModule();
                 }
             }
         }
 
-        function logout() 
-        {
+        function logout(){
             unset($_SESSION['usuario']);
         }
 
-        function isLoged() 
-        {
-            if(!empty($_SESSION['usuario']->getIDUsuario())) 
-            {
+        function isLoged() {
+            if(!empty($_SESSION['usuario']->getIDUsuario())){
                 return true;
             }
             return false;

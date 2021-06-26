@@ -1,7 +1,8 @@
 <?php
 
     require_once('DAO.php');
-    require_once('../Modelos/UserEntity.php');
+    require_once('PerfilDAO.php');
+    require_once('../Modelos/UsuarioEntity.php');
 
     class usuarioDAO extends DAO {
        

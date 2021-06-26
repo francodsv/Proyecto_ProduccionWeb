@@ -3,7 +3,7 @@
 
 require_once('BaseEntity.php');
 
-class usuarioEntity extends BaseEntity 
+class UsuarioEntity extends BaseEntity 
 {
     protected $id_usuario;
     protected $mail;
