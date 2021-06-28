@@ -45,7 +45,7 @@ if(isset($_GET['del'])){
                       <th>Nombre</th>
                       <th>User</th>
                       <th>Perfiles</th> 
-                      <th>Acciones</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -56,8 +56,8 @@ if(isset($_GET['del'])){
                             <td><?php echo $user->getUsuario()  ?></td>
                             <td><?php echo implode(', ',array_map(function ($p){return $p->getNombre();},$user->getPerfiles()) )  ?></td> 
                             <td>
-                            <a href="UsuariosForm.php?edit=<?php echo $user->getIDUsuario()?>">a <i class="fas fa-th"></i></a>
-                            <a href="UsuariosListado.php?del=<?php echo $user->getIDUsuario()?>">b<i class="fas fa-trash"></i></a>
+                            <a href="UsuariosForm.php?edit=<?php echo $user->getIDUsuario()?>">EDITAR |<i class="fas fa-th"></i></a>
+                            <a href="UsuariosListado.php?del=<?php echo $user->getIDUsuario()?>">ELIMINAR<i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
