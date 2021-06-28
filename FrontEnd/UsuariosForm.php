@@ -1,13 +1,6 @@
 <?php
 
-include('../FrontEnd/header.php');
-
-
-include_once('../LogicaNegocio/userBussines.php');
-include_once('../LogicaNegocio/perfilBussines.php');
-$bUser = new userBussines($con);
-$bPerfil = new perfilBusiness($con);
-
+include('header.php');
 
 if(isset($_POST['userSubmit'])){
   unset($_POST['userSubmit']);
@@ -18,7 +11,7 @@ if(isset($_POST['userSubmit'])){
     $bUser->saveUser($_POST);
   }
 
- // redirect('UsuariosListado.php'); PARA REDIRIGIR A EL LISTADO DE USUARIO
+  //header('UsuariosListado.php');
 }
 
 $id = 0;
@@ -59,21 +52,21 @@ $user = $bUser->getUser($id);
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email </label>
-                    <input type="email" class="form-control" name="email" value="<?php echo $user->getEmail() ?>" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="email" class="form-control" name="mail" value="<?php echo $user->getMail() ?>" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">User</label>
-                    <input type="text" class="form-control" name="user" value="<?php echo $user->getUSer() ?>" id="exampleInputEmail1" placeholder="User">
+                    <input type="text" class="form-control" name="usuario" value="<?php echo $user->getUsuario() ?>" id="exampleInputEmail1" placeholder="User">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" name="pass" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Perfiles</label>
                     <select name="perfiles[]" multiple=multiple class="custom-select form-control-border" id="exampleSelectBorder">
                       <?php foreach($bPerfil->getPerfiles() as $perfil){ ?>
-                         <option value="<?php echo $perfil->getId()?>" <?php echo $user->poseePerfil($perfil->getId())?'selected':'' ?>><?php echo $perfil->getNombre()?></option>-->
+                         <option value="<?php echo $perfil->getIDPerfil()?>" <?php echo $user->poseePerfil($perfil->getIDPerfil())?'selected':'' ?>><?php echo $perfil->getNombre()?></option>-->
                       <?php }?>
                     </select>
                   </div>
@@ -102,6 +95,6 @@ $user = $bUser->getUser($id);
 
   <?php
 
-include('../FrontEnd/footer.php'); 
+//include('footer.php'); 
 
 ?>

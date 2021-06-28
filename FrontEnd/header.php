@@ -1,4 +1,6 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1); 
     session_start();
     include_once('../LogicaNegocio/gamesBussines.php');
     include_once('../LogicaNegocio/categoriaBussines.php');
@@ -6,24 +8,29 @@
     include_once('../LogicaNegocio/loginBussines.php');
     include_once('../LogicaNegocio/perfilBussines.php');
     include_once('../LogicaNegocio/userBussines.php'); 
+
     include('../Helpers/conecction.php');
     $loginB = new loginBussines($con);
     $bUser = new userBussines($con);
-    //$bPerfil = new perfilBussines($con);
+    $bPerfil = new perfilBusiness($con);
+   
 
-    if(isset($_POST['login'])) 
-    {
-        $loginB->login($_POST);
-    }
+    if(isset($_POST['login'])){
+        if(!$loginB->login($_POST)){
+          header('login.php?errAth');
+          die();
+        }
+     }
 
     if(isset($_GET['logout'])) 
     {
         $loginB->logout();
     }
-    /*if(!$loginB->isLoged())
+  /*  if(!$loginB->isLoged())
     {
-        header('Location:login.php');     ES PARA QUE SI NO ESTAMOS LOGUEADOS NOS LLEVE AL LOGIN.PHP
-    }*/
+        header('login.php');   
+        die();
+    } */
 ?>
 
 <header>

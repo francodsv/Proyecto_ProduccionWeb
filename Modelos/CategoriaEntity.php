@@ -21,7 +21,7 @@ class CategoriaEntity extends BaseEntity {
     public function setIDCategoria($id_categoria) {
 
         $this->id_categoria = $id_categoria;
-
+        
     }
 
 }

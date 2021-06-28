@@ -19,7 +19,7 @@
             return $user;
 
         }
-
+        
         public function getUsers() {
 
             $users = $this->UsuarioDao->getAll();
@@ -35,7 +35,7 @@
 
         public function modifyUser($id, $datos) 
         {
-            if(empty($datos['pass'])) 
+            if(!empty($datos['pass'])) 
             {
                 $datos['pass'] = password_hash($datos['pass'],PASSWORD_DEFAULT);
             }
@@ -44,7 +44,7 @@
 
         public function deleteUser($id) 
         {
-            $this->UsuarioDAO->modify($id);
+            $this->UsuarioDAO->delete($id);
         }
 
     }

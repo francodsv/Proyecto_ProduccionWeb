@@ -27,7 +27,7 @@
   </div>
 </form>
 
-<pre> <?php echo var_dump($bUser->getUser('1'));?> </pre>
+<pre> <?php echo var_dump($bUser->getUser(1));?> </pre>
 
 </body>
 

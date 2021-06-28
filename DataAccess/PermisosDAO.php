@@ -14,7 +14,7 @@ class permisosDAO extends DAO{
    
 
     public function getAll($where = array()){
-        $sql = "SELECT id, nombre, cod, modulo FROM ".$this->table;
+        $sql = "SELECT id_permiso, nombre, cod, modulo FROM ".$this->table;
         if(!empty($where)){
             $sql .= ' WHERE '.implode(' ',$where);
         } 
@@ -25,10 +25,10 @@ class permisosDAO extends DAO{
     }
 
     public function getAllByPerfil($perfilId){
-        $sql = "SELECT id, nombre, cod, modulo  
+        $sql = "SELECT permisos.id_permiso, nombre, cod, modulo  
                 FROM permisos
-                INNER JOIN perfil_permisos ON perfil_permisos.permiso = permisos.id
-                WHERE perfil = ".$perfilId ;   
+                INNER JOIN perfil_permisos ON perfil_permisos.id_permiso = permisos.id_permiso
+                WHERE id_perfil = ".$perfilId ;   
         $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PermisosEntity');
        
         return $resultado->fetchAll();

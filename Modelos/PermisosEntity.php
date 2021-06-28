@@ -8,11 +8,11 @@ class PermisosEntity extends BaseEntity {
     protected $cod;
     protected $modulo;
 
-    public function __construct(){
+/*    public function __construct(){
         //$this->permisos = array();
         parent::__construct();
     }
-     
+ */    
     public function getIDPermisos(){
         return $this->id_permiso;
     } 

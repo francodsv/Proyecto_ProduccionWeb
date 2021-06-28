@@ -20,8 +20,7 @@ abstract class DAO{
         $column = array();
         $values = array();
 
-        foreach($datos as $key => $value) 
-        {
+        foreach($datos as $key => $value) {
             if(!empty($value)) 
             {
                 $column[] = $key;
@@ -30,7 +29,7 @@ abstract class DAO{
         }
 
         $sql = "INSERT INTO ".$this->table."(".implode(',',$column).") VALUES ('".implode("','",$values)."')";
-        
+        echo $sql;die();
         return $this->con->exec($sql);
     }
 

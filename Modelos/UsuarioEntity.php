@@ -14,7 +14,7 @@ class UsuarioEntity extends BaseEntity
     public function __construct() 
     {
         parent::__construct();
-        $this->permisos = array();
+        $this->perfiles = array();
     }
 
     public function getIDUsuario() 
@@ -42,11 +42,9 @@ class UsuarioEntity extends BaseEntity
         return $this->perfiles;
     }
 
-
-
-    public function setIDUsuario($id_usuario) 
+    public function setIDUsuario($id_usuario)
     {
-         $this->id_usuario = $id_usuario;
+        $this->id_usuario = $id_usuario;
     }
 
     public function setmail($mail) 
@@ -71,7 +69,7 @@ class UsuarioEntity extends BaseEntity
 
     public function poseePerfil($id_usuario){
         foreach($this->getPerfiles() as $perfil){
-            if($perfil->getIDUsuario() == $id_usuario){
+            if($perfil->getIDPerfil() == $id_usuario){
                 return true;
             }
         }

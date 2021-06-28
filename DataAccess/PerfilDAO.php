@@ -26,11 +26,11 @@ class PerfilDAO extends DAO{
 
     }
 
-    public function getAllByUser($id_perfil){
-        $sql = "SELECT id_perfil, nombre  
+    public function getAllByUser($id_usuario){
+        $sql = "SELECT perfil.id_perfil, nombre  
                 FROM perfil
-                INNER JOIN usuario_perfil ON user_perfil.perfil = perfil.id_perfil
-                WHERE user = ".$id_perfil;  
+                INNER JOIN usuario_perfil ON usuario_perfil.id_perfil = perfil.id_perfil
+                WHERE id_usuario = ".$id_usuario;  
         $resultado = $this->con->query($sql,PDO::FETCH_CLASS,'PerfilEntity')->fetchAll();
         foreach($resultado as $index=>$perfil){
             $resultado[$index]->setPermisos($this->permisoDAO->getAllByPerfil($perfil->getIDPerfil()));
