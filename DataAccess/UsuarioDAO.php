@@ -56,7 +56,7 @@
             }
 
             $this->con->exec($sql);
-            echo $sql;die();
+            
             return $save;
 
         }
@@ -77,6 +77,13 @@
             $this->con->exec($sql);
 
             return $modify;
+        }
+
+        public function delete($id){
+        
+            $sql = 'DELETE FROM usuario_perfil WHERE id_usuario = '.$id.';';
+            $this->con->exec($sql);
+            return parent::delete($id);
         }
         
 

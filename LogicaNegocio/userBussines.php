@@ -30,7 +30,7 @@
         public function saveUser($datos) 
         {
             $datos['pass'] = password_hash($datos['pass'],PASSWORD_DEFAULT);
-            $this->UsuarioDAO->save($datos);
+            $this->UsuarioDao->save($datos);
         }
 
         public function modifyUser($id, $datos) 
@@ -39,12 +39,12 @@
             {
                 $datos['pass'] = password_hash($datos['pass'],PASSWORD_DEFAULT);
             }
-            $this->UsuarioDAO->modify($id, $datos);
+            $this->UsuarioDao->modify($id, $datos);
         }
 
         public function deleteUser($id) 
         {
-            $this->UsuarioDAO->delete($id);
+            $this->UsuarioDao->delete($id);
         }
 
     }

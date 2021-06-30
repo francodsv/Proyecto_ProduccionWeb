@@ -29,7 +29,7 @@ abstract class DAO{
         }
 
         $sql = "INSERT INTO ".$this->table."(".implode(',',$column).") VALUES ('".implode("','",$values)."')";
-        echo $sql;die();
+    
         return $this->con->exec($sql);
     }
 
@@ -52,14 +52,14 @@ abstract class DAO{
         */
 
         //$sql = "UPDATE ".$this->table." SET ".implode(',',$set).", fechaModificacion = now() WHERE id = ".$id;
-        $sql = "UPDATE ".$this->table." SET ".implode(',',$set)."WHERE id = ".$id; 
+        $sql = "UPDATE ".$this->table." SET ".implode(',',$set)."WHERE id_usuario = ".$id; 
 
          return $this->con->exec($sql);
     }
     
     public function delete($id) 
     {
-        $sql = "DELETE FROM $this->table WHERE id = $id";
+        $sql = "DELETE FROM $this->table WHERE id_usuario = $id";
         return $this->con->exec($sql);
     }
 

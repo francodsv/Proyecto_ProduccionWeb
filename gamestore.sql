@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2021 a las 03:55:27
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Tiempo de generación: 26-06-2021 a las 21:21:09
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -97,6 +97,50 @@ INSERT INTO `desarrollador` (`id_desarrollador`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `id_perfil` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `perfil_permisos`
+--
+
+CREATE TABLE `perfil_permisos` (
+  `id_perfil` int(11) NOT NULL,
+  `id_permiso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permisos`
+--
+
+CREATE TABLE `permisos` (
+  `id_permiso` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `cod` varchar(50) NOT NULL,
+  `modulo` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `permisos`
+--
+
+INSERT INTO `permisos` (`id_permiso`, `nombre`, `cod`, `modulo`) VALUES
+(1, 'agregar usuarios', 'user.add', 'user'),
+(2, 'agregar categoria', 'category.add', 'category'),
+(3, 'agregar producto', 'producto.add', 'producto');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `plataforma`
 --
 
@@ -181,6 +225,37 @@ INSERT INTO `productos` (`id_producto`, `id_desarrollador`, `id_plataforma`, `id
 (39, 30, 4, 6, 'Castle Crashers', '¡Ábrete paso golpeando, acuchillando y machacando hasta la victoria en esta 6 arcade en 2D de The Behemoth! Castle Crashers Incluye personajes dibujados a mano e ilustraciones visuales de alta resolución jamás vistas hasta ahora. ¡Pueden jugar cuatro amigos en casa u online para salvar a la princesa, defiende el reino y destruir varios castillos!', '299.99', 64, 'False', '3.85', '2027-08-08'),
 (40, 31, 4, 4, 'Don´t Starve', 'Don´t Starve es un implacable juego de supervivencia en la naturaleza repleto de ciencia y magia.\nJuegas como Wilson, un intrépido caballero científico que ha sido atrapado por un demonio y transportado a un misterioso mundo en estado salvaje. Wilson deberá aprender a explotar su entorno y a sus habitantes si quiere albergar alguna esperanza de escapar y encontrar la forma de regresar a casa.\nEntra en un mundo extraño e inexplorado repleto de misteriosas criaturas, peligros y sorpresas. Recolecta recursos para fabricar objetos y estructuras que se adapten a tu estilo de supervivencia. Juega a tu manera mientras desentrañas los misterios de esta inhóspita tierra.', '829.99', 25, 'False', '3.95', '2023-04-13');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `pass` varchar(50) NOT NULL,
+  `mail` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `pass`, `mail`) VALUES
+(1, 'admin', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_perfil`
+--
+
+CREATE TABLE `usuario_perfil` (
+  `id_usuario` int(11) NOT NULL,
+  `id_perfil` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Índices para tablas volcadas
 --
@@ -198,6 +273,28 @@ ALTER TABLE `desarrollador`
   ADD PRIMARY KEY (`id_desarrollador`);
 
 --
+-- Indices de la tabla `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`id_perfil`);
+
+--
+-- Indices de la tabla `perfil_permisos`
+--
+ALTER TABLE `perfil_permisos`
+  ADD KEY `id_perfil` (`id_perfil`),
+  ADD KEY `id_permiso` (`id_permiso`);
+
+--
+-- Indices de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  ADD PRIMARY KEY (`id_permiso`),
+  ADD UNIQUE KEY `nombre` (`nombre`),
+  ADD UNIQUE KEY `cod` (`cod`),
+  ADD UNIQUE KEY `modulo` (`modulo`);
+
+--
 -- Indices de la tabla `plataforma`
 --
 ALTER TABLE `plataforma`
@@ -213,6 +310,21 @@ ALTER TABLE `productos`
   ADD KEY `desarrollador_fk` (`id_desarrollador`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `usuario` (`usuario`),
+  ADD UNIQUE KEY `mail` (`mail`);
+
+--
+-- Indices de la tabla `usuario_perfil`
+--
+ALTER TABLE `usuario_perfil`
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_perfil` (`id_perfil`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -220,7 +332,19 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `desarrollador`
 --
 ALTER TABLE `desarrollador`
-  MODIFY `id_desarrollador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id_desarrollador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+
+--
+-- AUTO_INCREMENT de la tabla `perfil`
+--
+ALTER TABLE `perfil`
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `permisos`
+--
+ALTER TABLE `permisos`
+  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -229,8 +353,21 @@ ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `perfil_permisos`
+--
+ALTER TABLE `perfil_permisos`
+  ADD CONSTRAINT `perfil_permisos_ibfk_1` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`),
+  ADD CONSTRAINT `perfil_permisos_ibfk_2` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`);
 
 --
 -- Filtros para la tabla `productos`
@@ -239,6 +376,13 @@ ALTER TABLE `productos`
   ADD CONSTRAINT `categoria_fk` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`),
   ADD CONSTRAINT `desarrollador_fk` FOREIGN KEY (`id_desarrollador`) REFERENCES `desarrollador` (`id_desarrollador`),
   ADD CONSTRAINT `plataforma_fk` FOREIGN KEY (`id_plataforma`) REFERENCES `plataforma` (`id_plataforma`);
+
+--
+-- Filtros para la tabla `usuario_perfil`
+--
+ALTER TABLE `usuario_perfil`
+  ADD CONSTRAINT `usuario_perfil_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `usuario_perfil_ibfk_2` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
